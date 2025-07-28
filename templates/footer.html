@@ -1,0 +1,41 @@
+<script>
+    // Helper for ordinal suffix
+    function ordinalSuffix(day) {
+        if (day > 3 && day < 21) return "th";
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    }
+
+    const dateElement = document.getElementById("currentDate");
+    const now = new Date();
+
+    // Get individual parts
+    const weekday = now.toLocaleDateString(undefined, { weekday: "long" });
+    const month = now.toLocaleDateString(undefined, { month: "long" });
+    const day = now.getDate();
+    const ordinal = ordinalSuffix(day);
+
+    // Compose the final string
+    const formattedDate = `${weekday}, ${month} ${day}${ordinal}`;
+
+    dateElement.innerHTML = formattedDate;
+
+    // give active page the active link style
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all anchor tags
+        document.querySelectorAll('a').forEach(function (anchor) {
+            // Compare absolute hrefs
+            if (anchor.href === window.location.href) {
+                anchor.classList.add('active');
+                // If your nav links are inside <li> elements:
+                if (anchor.parentElement.tagName.toLowerCase() === 'li') {
+                    anchor.parentElement.classList.add('active');
+                }
+            }
+        });
+    });
+</script>

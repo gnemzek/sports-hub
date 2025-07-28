@@ -1,0 +1,42 @@
+/* Overall Styles */
+.site-logo {
+    width: 200px;
+}
+
+.navbar>.container-fluid {
+    justify-content: flex-start !important;
+}
+
+.main-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h1,
+h2 {
+    font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
+    font-weight: bold !important;
+}
+
+h3 {
+    font-family: swear-display, Arial, Helvetica, Roboto, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: white !important;
+    background-color: #fa4d00;
+    padding: 10px;
+}
+
+p,
+a {
+    font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
+}
+
+
+
+/* WNBA page */
+.upcoming-game-name {
+    font-weight: bold;
+}

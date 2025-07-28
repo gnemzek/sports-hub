@@ -1,0 +1,15 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='ewws.png') }}" alt="Logo" class="d-inline-block align-text-top site-logo">
+      </a>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('wnba_home') }}">WNBA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('pwhl_home') }}">PWHL</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
