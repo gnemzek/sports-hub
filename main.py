@@ -4,6 +4,7 @@ import requests
 from flask import Flask, render_template, redirect, url_for
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
+from helpers import date_handling
 
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
@@ -39,24 +40,12 @@ def wnba_home():
         data = response.json()
         games = data.get("games", [])
         for game in games:
-            # date handing 
-            iso_date = game.get("scheduled") # e.g., "2025-07-25T19:30:00Z"
-            try:
-                # Parse as UTC
-                dt_utc = datetime.fromisoformat(game["scheduled"].replace('Z', '+00:00'))
-                #Convert to Central Time
-                dt_central = dt_utc.astimezone(ZoneInfo("America/Chicago"))
-                #format date
-                game["readable_date"] = dt_central.strftime("%A, %B %d, %Y, %-I:%M %p")
-            except Exception as e:
-                print(f"Failed to parse date: {iso_date}. Reason: {e}")
-                game["readable_date"] = "Date unavailable"
+            date_handling(game)
             home_team = game["home"]["name"]
             away_team = game["away"]["name"]
             tip_time = game["readable_date"]
             venue = game["venue"]["name"]
             city = game["venue"]["city"]
-
         return render_template('wnba-home.html', raw_data=data, games=data['games'])
     else:
         return f"API Error: {response.status_code}"
