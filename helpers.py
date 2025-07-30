@@ -1,5 +1,9 @@
+import requests
+import os
+from flask import Flask, render_template, redirect, url_for
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
+
 
 def date_handling(game):
      # date handing 
@@ -11,6 +15,10 @@ def date_handling(game):
         dt_central = dt_utc.astimezone(ZoneInfo("America/Chicago"))
         #format date
         game["readable_date"] = dt_central.strftime("%A, %B %d, %Y, %-I:%M %p")
+
+        # Just the time ()
+        game["readable_game_time"] = dt_central.strftime("%-I:%M %p")
+
     except Exception as e:
         print(f"Failed to parse date: {iso_date}. Reason: {e}")
         game["readable_date"] = "Date unavailable"
