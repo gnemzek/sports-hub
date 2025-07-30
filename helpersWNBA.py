@@ -69,4 +69,70 @@ def get_live_scores():
     else:
         return f"API Error: {response.status_code}", []
 
+def get_league_standings():
+    url = "https://api.sportradar.com/wnba/trial/v8/en/seasons/2025/REG/standings.json"
+
+    headers = {
+        "accept": "application/json",
+        "x-api-key": api_key
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        standings = {
+            'eastern': [],
+            'western': [],
+            'league': [],
+            'season_info': {
+                'year': data.get('season', {}).get('year'),
+                'type': data.get('season', {}).get('type')
+            }
+        }
+
+        all_teams = []
+        
+        for conference in data.get('conferences', []):
+            conf_name = conference.get('name', '').lower()
+            teams_data = []
+            
+            for team in conference.get('teams', []):
+                team_info = {
+                    'conf_name': conf_name,
+                    'team_name': f"{team.get('market', '')} {team.get('name', '')}".strip(),
+                    'wins': team.get('wins', 0),
+                    'losses': team.get('losses', 0),
+                    'win_pct': team.get('win_pct', 0),
+                    'games_behind': team.get('games_behind', {}).get('conference', 0),
+                    'streak': f"{team.get('streak', {}).get('kind', '').title()} {team.get('streak', {}).get('length', 0)}",
+                    'conf_rank': team.get('calc_rank', {}).get('conf_rank', 0),
+                    'league_rank': team.get('calc_rank', {}).get('league_rank', 0),
+                    'points_for': team.get('points_for', 0),
+                    'points_against': team.get('points_against', 0),
+                    'point_diff': team.get('point_diff', 0)
+                }
+
+                # make the conference name look better for front-end
+                if team_info['conf_name'] == "western conference":
+                    team_info['pretty_conf_name'] = "Western"
+                elif team_info['conf_name'] == "eastern conference":
+                    team_info['pretty_conf_name'] = "Eastern"
+                teams_data.append(team_info)
+                all_teams.append(team_info)
+            
+            # Sort by conference rank
+            teams_data.sort(key=lambda x: x['conf_rank'])
+            
+            if 'eastern' in conf_name:
+                standings['eastern'] = teams_data
+            elif 'western' in conf_name:
+                standings['western'] = teams_data
+
+        # Sort all teams by league rank for combined standings
+        all_teams.sort(key=lambda x: x['league_rank'])
+        standings['league'] = all_teams
+        
+        return standings
+    else:
+        return {'eastern': [], 'western': [], 'error': f"API Error: {response.status_code}"}
 

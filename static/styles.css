@@ -1,3 +1,14 @@
+/* Palette Colors 
+WNBA Orange: FA4D00
+PWHL Purple: #6A4C93 (not pulled from PWHL stuff, but generated in a palatte that looks good w/WNBA orange)
+
+Secondary colors:
+Yellow: FFCA3A
+Green: 8AC926
+Blue: 1982C4
+
+
+*/
 /* Overall Styles */
 .site-logo {
     width: 200px;
@@ -26,11 +37,19 @@ h3 {
     font-family: swear-display, Arial, Helvetica, Roboto, sans-serif;
 }
 
-h2 {
+.h2 {
     text-align: center;
     color: white !important;
-    background-color: #fa4d00;
     padding: 10px;
+}
+
+.wnba.h2 {
+    background-color: #fa4d00;
+}
+
+.pwhl.h2 {
+    background-color: #6A4C93;
+
 }
 
 p,
@@ -48,3 +67,16 @@ a {
 #currentDate {
     font-size: 1.5rem;
 }
+
+/* League Standings */
+
+span.conf.badge.conf-Western {
+    background-color: #8AC926;
+}
+
+span.conf.badge.conf-Eastern {
+    background-color: #1982C4;
+}
+
+
+/* PWHL Page */
