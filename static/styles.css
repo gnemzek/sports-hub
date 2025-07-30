@@ -37,17 +37,17 @@ h3 {
     font-family: swear-display, Arial, Helvetica, Roboto, sans-serif;
 }
 
-.h2 {
+h2 {
     text-align: center;
     color: white !important;
     padding: 10px;
 }
 
-.wnba.h2 {
+.wnba h2 {
     background-color: #fa4d00;
 }
 
-.pwhl.h2 {
+.pwhl h2 {
     background-color: #6A4C93;
 
 }
