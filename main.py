@@ -29,25 +29,51 @@ def wnba_home():
     year = today.strftime("%Y")
     month = today.strftime("%m")
     day = today.strftime("%d")
+    todays_id = year + month + day
 
     # get todays schedule
-    url = f"https://api.sportradar.com/wnba/trial/v8/en/games/{year}/{month}/{day}/schedule.json"
+    url = f"https://wnba-api.p.rapidapi.com/wnbaschedule"
+
+    querystring = {"year":year,"month":month,"day":day}
     headers = {
-        "accept": "application/json",
-        "x-api-key": api_key
+	"x-rapidapi-key": api_key,
+	"x-rapidapi-host": "wnba-api.p.rapidapi.com"
     }
-    response = requests.get(url, headers=headers)
-    todays_scheduled_ids = []
+    response = requests.get(url, headers=headers, params=querystring)
+
     if response.status_code == 200:
         data = response.json()
-        games = data.get("games", [])
-        for game in games:
-            # date handling from the helper.py file
-            date_handling(game)
         
-        live_scores = get_live_scores()
-        standings_data = get_league_standings()
-        return render_template('wnba-home.html', raw_data=data, games=data['games'], live_scores=live_scores, standings=standings_data)
+        if todays_id in data:
+            processed_games = []
+            todays_games = data[todays_id]
+            for game in todays_games:
+                home_team = None
+                away_team = None
+                for competitor in game.get('competitors', []):
+                    if competitor.get('isHome'):
+                        home_team = competitor
+                    else:
+                        away_team = competitor
+                if home_team and away_team:
+                    # date handling from the helper.py file
+                    readable_date, readable_game_time = date_handling(game.get("date"))
+                    print(readable_game_time)
+                    processed_games.append({
+                        "id": game["id"],
+                        "home_team": home_team["displayName"],
+                        "away_team": away_team["displayName"],
+                        "home_score": home_team.get("score"),
+                        "away_score": away_team.get("score"),
+                        "winner": home_team["displayName"] if home_team.get("winner") else away_team["displayName"] if away_team.get("winner") else "N/A",
+                        "completed": game["completed"],
+                        "readable_date": readable_date,
+                        "readable_time": readable_game_time
+                    })
+                    
+        
+            
+        return render_template('wnba-home.html', raw_data=data, games=processed_games)
     else:
         return f"API Error: {response.status_code}"
 

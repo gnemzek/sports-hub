@@ -24,11 +24,9 @@
           <h2>Game Schedule <br><span id="currentDate"></span></h2>
           {% for game in games %}
           <div class="upcoming-game-container">
-            <p><span class="upcoming-game-name"> {{ game.home.name }} vs {{ game.away.name }} </span>
+            <p><span class="upcoming-game-name"> {{ game.away_team }} vs {{ game.home_team }} </span>
               <br>
-              {{ game.venue.name }} ({{ game.venue.city }})
-              <br>
-              {{ game.readable_date }}
+              {{ game.readable_time }}
             </p>
           </div>
           {% endfor %}
@@ -36,9 +34,7 @@
 
         <div class="league-standings">
           <h2>League Standings</h2>
-           {% for team in standings.league %}
-              <div><span class="league-rank">{{ team.league_rank }}</span> - <span class="team-name">{{ team.team_name }} </span> <span class="conf badge conf-{{ team.pretty_conf_name }}">{{ team.pretty_conf_name }}</span> </div>
-           {% endfor %}
+      
         </div>
 
       </div>
@@ -46,20 +42,7 @@
       <div class="col-md-6 col-12">
         <div class="todays-live-scores">
           <h2>Live Scores</h2>
-          {% for game in live_scores %}
-          <div class="game-score">
-            <div class="teams">
-              <span class="away-team">{{ game.away_alias }} {{ game.away_score }}</span>
-              <span class="vs">at</span>
-              <span class="home-team">{{ game.home_alias }} {{ game.home_score }}</span>
-            </div>
-            <div class="game-status" id="game-status">{{ game.status }}
-              {% if game.status == 'Scheduled' %}
-              <span class="game-time">for {{ game.readable_game_time }}</span>
-            </div>
-            {% endif %}
-          </div>
-          {% endfor %}
+          
         </div>
 
       </div>
