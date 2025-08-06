@@ -34,18 +34,24 @@
 
         <div class="league-standings">
           <h2>League Standings</h2>
-          <ul>
-           {% for team in teams %}
-               <li class="team-item">
-                {% if team.logo %}
-                    <img src="{{ team.logo }}" alt="{{ team.name }} Logo" class="team-logo">
-                {% endif %}
-                <div class="team-details">
-                    <span>{{ team.name }}</span> ({{ team.abbreviation }})
-                </div>
-            </li>
-           {% endfor %}
-           </ul>
+
+          {% for team in teams %}
+          <div class="row team-wrapper">
+            <div class="team-logo col-md-1">
+
+              <img src="{{ team.logo }}" alt="{{ team.name }} Logo" class="team-logo img-fluid">
+
+            </div>
+            <div class="team-details col-md-10">
+              <span class="team-name">{{ team.name }}</span> ({{ team.abbreviation }})
+            </div>
+            <div class="team-conf col-md-1">
+               {{ team.games_behind }}
+            </div>
+
+          </div>
+          {% endfor %}
+
         </div>
 
       </div>
@@ -53,7 +59,7 @@
       <div class="col-md-6 col-12">
         <div class="todays-live-scores">
           <h2>Live Scores</h2>
-          
+
         </div>
 
       </div>

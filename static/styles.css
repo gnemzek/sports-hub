@@ -70,13 +70,21 @@ a {
 
 /* League Standings */
 
-span.conf.badge.conf-Western {
-    background-color: #8AC926;
+img.team-logo.img-fluid {
+    max-width: 50px;
 }
 
-span.conf.badge.conf-Eastern {
-    background-color: #1982C4;
+.team-details {
+    text-align: center;
+    font-size: 1.3rem;
 }
 
+.team-details .team-name {
+    font-weight: bold;
+}
+
+.row.team-wrapper {
+    margin-bottom: 15px;
+}
 
 /* PWHL Page */

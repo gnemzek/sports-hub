@@ -26,12 +26,24 @@ def get_league_standings():
     
     if response.status_code == 200:
        data = response.json()
-       print("testing...")
        all_teams = []
 
        for entry in data["standings"]["entries"]:
            team_info = entry["team"]
-           all_teams.append(team_info)
+
+           games_behind_value = ""
+           if "stats" in entry:
+                for stat in entry["stats"]:
+                    if stat.get("abbreviation") == "GB" or stat.get("name") == "gamesBehind":
+                        games_behind_value = stat.get("displayValue")
+                        break
+           all_teams.append({
+                "id": team_info.get("id"),
+                "name": team_info.get("displayName"),
+                "abbreviation": team_info.get("abbreviation"),
+                "logo": team_info.get("logos")[0].get("href") if team_info.get("logos") else "",
+                "games_behind": games_behind_value
+                })
 
        return all_teams
     else:
