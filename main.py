@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, url_for
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
 from helpers import date_handling
-from helpersWNBA import get_live_scores, get_league_standings
+from helpersWNBA import get_league_standings
 
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
@@ -58,7 +58,7 @@ def wnba_home():
                 if home_team and away_team:
                     # date handling from the helper.py file
                     readable_date, readable_game_time = date_handling(game.get("date"))
-                    print(readable_game_time)
+
                     processed_games.append({
                         "id": game["id"],
                         "home_team": home_team["displayName"],
@@ -72,8 +72,8 @@ def wnba_home():
                     })
                     
         
-            
-        return render_template('wnba-home.html', raw_data=data, games=processed_games)
+        standings_data = get_league_standings()    
+        return render_template('wnba-home.html', raw_data=data, games=processed_games, teams=standings_data)
     else:
         return f"API Error: {response.status_code}"
 
