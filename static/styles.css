@@ -27,6 +27,10 @@ Blue: 1982C4
     margin-bottom: 30px;
 }
 
+h1 {
+    text-align: center;
+}
+
 h1,
 h2 {
     font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
@@ -68,7 +72,19 @@ a {
     font-size: 1.5rem;
 }
 
+/* Game Schedule */
+.todays-games {
+    border: 5px solid #fa4d00;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 /* League Standings */
+
+.league-standings {
+    border: 5px solid #fa4d00;
+    margin-bottom: 30px;
+}
 
 img.team-logo.img-fluid {
     max-width: 50px;
@@ -85,6 +101,16 @@ img.team-logo.img-fluid {
 
 .row.team-wrapper {
     margin-bottom: 15px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 /* PWHL Page */
+.game-schedule-wrapper,
+.all-teams-wrapper {
+    border: 5px solid #6A4C93;
+}
+
+.game-schedule-wrapper {
+    text-align: center;
+}

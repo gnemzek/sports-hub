@@ -80,5 +80,47 @@ def wnba_home():
 
 @app.route('/pwhl')
 def pwhl_home():
+    # set the date to today's date:
+    today = datetime.now(timezone.utc)
+    year = today.strftime("%Y")
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+
+
+    #get standings
+    url = "https://api-hockey.p.rapidapi.com/standings/"
+
+    querystring = {"league":"261","season":year}
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "api-hockey.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+
+    if response.status_code == 200:
+        data = response.json()
+        team_standings = []
+
+        for entry in data["response"][0]: # Iterate through the list of team entries
+            team_details = entry.get("team", {})
+            games_stats = entry.get("games", {})
+
+            team_standings.append({
+                "position": entry.get("position"),
+                "name": team_details.get("name")[:-2],
+                "logo": team_details.get("logo"),
+                "games_played": games_stats.get("played"),
+                "wins": games_stats.get("win", {}).get("total"),
+                "losses": games_stats.get("lose", {}).get("total"),
+                "points": entry.get("points"),
+                "form": entry.get("form")
+                # Add more fields as needed (e.g., goals for/against, win_overtime, etc.)
+            })
+    
+
+
+
     # Render PWHL page
-    return render_template('pwhl-home.html')
+    return render_template('pwhl-home.html', teams=team_standings)

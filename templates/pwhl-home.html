@@ -15,10 +15,34 @@
   {% include "header.html" %}
   <div class="container">
     <h1>PWHL</h1>
-    <h2>Game Schedule <br> <span id="currentDate"></span></h2>
-    <p>No games today.</p>
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <div class="game-schedule-wrapper">
+          <h2>Game Schedule <br> <span id="currentDate"></span></h2>
+          <p>No games today. 2025-2026 season starts Fall 2025.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="all-teams-wrapper">
+          <h2>Teams</h2>
+          {% if teams %}
+          {% for team in teams %}
+          <div class="row team-wrapper">
+            <div class="team-details col-12"> <img src="{{ team.logo }}" alt="{{ team.name }} Logo"
+                class="team-logo img-fluid"> <br>
+              <span class="team-name">{{ team.name }}</span>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          <p class="no-data">Could not retrieve standings for {{ league_name }} {{ season_year }} or no teams found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
 
-   
+
 </body>
- {% include "footer.html" %}
+{% include "footer.html" %}
+
 </html>
