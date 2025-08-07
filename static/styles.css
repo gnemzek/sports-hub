@@ -27,6 +27,12 @@ Blue: 1982C4
     margin-bottom: 30px;
 }
 
+@media (min-width: 1400px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
 h1 {
     text-align: center;
 }
@@ -103,6 +109,42 @@ img.team-logo.img-fluid {
     margin-bottom: 15px;
     margin-right: 0;
     margin-left: 0;
+}
+
+/* WNBA News */
+
+.todays-news {
+    border: 5px solid #fa4d00;
+    margin-bottom: 30px;
+}
+
+.news-entry {
+    margin-bottom: 20px;
+}
+
+a.headline-link {
+    color: #fa4d00
+}
+
+a.headline-link:hover,
+a.headline-link:focus {
+    text-decoration: none;
+    color: #fa4d00;
+}
+
+.wnba h2.accordion-header {
+    background: white;
+}
+
+.accordion-item {
+    border: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #fa4d00;
+    box-shadow: none;
+    font-weight: bold;
 }
 
 /* PWHL Page */

@@ -48,3 +48,32 @@ def get_league_standings():
        return all_teams
     else:
         return  f"API Error: {response.status_code}"
+
+
+def get_league_news():
+    url = "https://wnba-api.p.rapidapi.com/wnba-news"
+    querystring = {"limit":"10"}
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+    response = requests.get(url, headers=headers, params=querystring)
+
+    all_news = []
+
+    if response.status_code == 200:
+       data = response.json()
+       i = 0
+       for entry in data:
+           all_news.append({
+               "description": entry.get("description"),
+               "headline": entry.get("headline"),
+               "link": entry.get("link"),
+               "image": entry.get("images")[0],
+               "index": i,
+           })
+           i += 1
+       return all_news
+    else:
+        return  f"API Error: {response.status_code}"
+    
