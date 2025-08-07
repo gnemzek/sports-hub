@@ -38,15 +38,15 @@
 
           {% for team in teams %}
           <div class="row team-wrapper">
-            <div class="team-logo col-md-1">
+            <div class="team-logo col-1">
 
               <img src="{{ team.logo }}" alt="{{ team.name }} Logo" class="team-logo img-fluid">
 
             </div>
-            <div class="team-details col-md-10">
+            <div class="team-details col-10">
               <span class="team-name">{{ team.name }}</span> ({{ team.abbreviation }})
             </div>
-            <div class="team-conf col-md-1">
+            <div class="team-conf col-1">
               {{ team.games_behind }}
             </div>
 
