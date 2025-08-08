@@ -67,6 +67,10 @@ a {
     font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
 }
 
+.img-fluid {
+    width: 100%;
+}
+
 
 
 /* WNBA page */
@@ -145,6 +149,10 @@ a.headline-link:focus {
     background-color: #fa4d00;
     box-shadow: none;
     font-weight: bold;
+}
+
+.news-row {
+    margin-bottom: 30px;
 }
 
 /* Scores */
