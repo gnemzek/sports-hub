@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 import requests
-from datetime import datetime, timezone, date
+from datetime import datetime, timezone, date, timedelta
 from zoneinfo import ZoneInfo
 import time
 from helpers import date_handling
@@ -50,9 +50,9 @@ def get_league_standings():
         return  f"API Error: {response.status_code}"
 
 
-def get_league_news():
+def get_league_news(num):
     url = "https://wnba-api.p.rapidapi.com/wnba-news"
-    querystring = {"limit":"10"}
+    querystring = {"limit":num}
     headers = {
         "x-rapidapi-key": api_key,
         "x-rapidapi-host": "wnba-api.p.rapidapi.com"
@@ -77,3 +77,89 @@ def get_league_news():
     else:
         return  f"API Error: {response.status_code}"
     
+
+def get_live_scores():
+    # set the date to today's date:
+    today = datetime.now(timezone.utc)
+    year = today.strftime("%Y")
+    month = today.strftime("%m")
+    day = today.strftime("%d")
+
+    url = "https://wnba-api.p.rapidapi.com/wnbascoreboard"
+
+    querystring = {"year":year,"month":month,"day":day}
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    
+    if response.status_code == 200:
+        data = response.json()
+
+        game_info = []
+        i = 0
+        for game in data["events"]:
+           competition = game["competitions"][i]
+           game_info.append({
+               "id": game.get("id"),
+               "name": game.get("name"),
+               "color": game.get("color"),
+               "alt_color": game.get("alternateColor"),
+               "home_team": competition["competitors"][0],
+               "home_team_name": competition["competitors"][0]["team"]["displayName"],
+               "home_score": competition["competitors"][0]["score"],
+               "away_team": competition["competitors"][1],
+               "away_team_name": competition["competitors"][1]["team"]["displayName"],
+               "away_score": competition["competitors"][1]["score"],
+           })
+
+        return game_info
+    else:
+        return  f"API Error: {response.status_code}"
+
+
+def get_yesterdays_scores():
+    # set the date to today's date:
+    yesterday = datetime.now(timezone.utc) - timedelta(days=1)
+    year = yesterday.strftime("%Y")
+    month = yesterday.strftime("%m")
+    day = yesterday.strftime("%d") 
+
+    url = "https://wnba-api.p.rapidapi.com/wnbascoreboard"
+
+    querystring = {"year":year,"month":month,"day":day}
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    
+    if response.status_code == 200:
+        data = response.json()
+
+        game_info = []
+        i = 0
+        for game in data["events"]:
+           competition = game["competitions"][i]
+           game_info.append({
+               "id": game.get("id"),
+               "name": game.get("name"),
+               "color": game.get("color"),
+               "alt_color": game.get("alternateColor"),
+               "home_team": competition["competitors"][0],
+               "home_team_name": competition["competitors"][0]["team"]["displayName"],
+               "home_score": competition["competitors"][0]["score"],
+               "away_team": competition["competitors"][1],
+               "away_team_name": competition["competitors"][1]["team"]["displayName"],
+               "away_score": competition["competitors"][1]["score"],
+           })
+
+        return game_info
+    else:
+        return  f"API Error: {response.status_code}"
+        

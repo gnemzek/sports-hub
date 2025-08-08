@@ -147,6 +147,19 @@ a.headline-link:focus {
     font-weight: bold;
 }
 
+/* Scores */
+
+.todays-live-scores {
+    border: 5px solid #fa4d00;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.game-name {
+    font-weight: bold;
+}
+
+
 /* PWHL Page */
 .game-schedule-wrapper,
 .all-teams-wrapper {
