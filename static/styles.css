@@ -151,9 +151,12 @@ a.headline-link:focus {
     font-weight: bold;
 }
 
-.news-row {
-    margin-bottom: 30px;
+a.btn.btn-primary.news-button {
+    margin: 10px auto;
+    display: block;
+    width: fit-content;
 }
+
 
 /* Scores */
 
@@ -165,6 +168,15 @@ a.headline-link:focus {
 
 .game-name {
     font-weight: bold;
+}
+
+/* News Page */
+.nav li {
+    margin-right: 5px;
+}
+
+.news-row {
+    margin-bottom: 30px;
 }
 
 
