@@ -39,7 +39,7 @@ For a live demo (so you don't have to get your own API key and set it up locally
     # or
     set FLASK_ENV=development     # On Windows
     ```
-6. Get API Key from [https://rapidapi.com/belchiorarkad-FqvHs2EDOtP/api/wnba-api](Rapid API)
+6. Get API Key from [Rapid API](https://rapidapi.com/belchiorarkad-FqvHs2EDOtP/api/wnba-api)
 
 7. Replace ```api_key``` inside main.py with your API key. You can also set it up in an .env file. This is reccomended if you are going to put your code anywhere that isn't local. 
 
