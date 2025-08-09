@@ -81,9 +81,10 @@ def get_league_news(num):
 def get_live_scores():
     # set the date to today's date:
     today = datetime.now(timezone.utc)
-    year = today.strftime("%Y")
-    month = today.strftime("%m")
-    day = today.strftime("%d")
+    today_central =  today.astimezone(ZoneInfo("America/Chicago"))
+    year = today_central.strftime("%Y")
+    month = today_central.strftime("%m")
+    day = today_central.strftime("%d")
 
     url = "https://wnba-api.p.rapidapi.com/wnbascoreboard"
 
@@ -123,10 +124,16 @@ def get_live_scores():
 
 def get_yesterdays_scores():
     # set the date to today's date:
-    yesterday = datetime.now(timezone.utc) - timedelta(days=1)
+    today = datetime.now(timezone.utc)
+    today_central = today.astimezone(ZoneInfo("America/Chicago"))
+
+    # set the date to tomorrow's date:
+    yesterday =  today_central - timedelta(days=1)
     year = yesterday.strftime("%Y")
     month = yesterday.strftime("%m")
     day = yesterday.strftime("%d") 
+
+    
 
     url = "https://wnba-api.p.rapidapi.com/wnbascoreboard"
 

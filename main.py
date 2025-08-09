@@ -26,9 +26,10 @@ def root():
 def wnba_home():
     # set the date to today's date:
     today = datetime.now(timezone.utc)
-    year = today.strftime("%Y")
-    month = today.strftime("%m")
-    day = today.strftime("%d")
+    today_central =  today.astimezone(ZoneInfo("America/Chicago"))
+    year = today_central.strftime("%Y")
+    month = today_central.strftime("%m")
+    day = today_central.strftime("%d")
     todays_id = year + month + day
 
     # get todays schedule
@@ -91,9 +92,10 @@ def wnba_news():
 def pwhl_home():
     # set the date to today's date:
     today = datetime.now(timezone.utc)
-    year = today.strftime("%Y")
-    month = today.strftime("%m")
-    day = today.strftime("%d")
+    today_central =  today.astimezone(ZoneInfo("America/Chicago"))
+    year = today_central.strftime("%Y")
+    month = today_central.strftime("%m")
+    day = today_central.strftime("%d")
 
 
     #get standings
