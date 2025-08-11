@@ -152,9 +152,11 @@ def get_yesterdays_scores():
         game_info = []
         i = 0
         for game in data["events"]:
-           competition = game["competitions"][i]
-           game_info.append({
-               "id": game.get("id"),
+            competition = game["competitions"][i]
+            game_id = game.get("id")
+
+            game_info.append({
+               "id": game_id,
                "name": game.get("name"),
                "color": game.get("color"),
                "alt_color": game.get("alternateColor"),
@@ -164,9 +166,35 @@ def get_yesterdays_scores():
                "away_team": competition["competitors"][1],
                "away_team_name": competition["competitors"][1]["team"]["displayName"],
                "away_score": competition["competitors"][1]["score"],
-           })
+               "game_summary": get_game_summary(game_id),
+            })
 
         return game_info
     else:
         return  f"API Error: {response.status_code}"
+    
+
+def get_game_summary(game_id):
+    summary_url = "https://wnba-api.p.rapidapi.com/wnbasummary"
+    summary_querystring = {"gameId":game_id}
+
+    summary_headers = {
+                "x-rapidapi-key": api_key,
+                "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+        }
+           
+    summary_response = requests.get(summary_url, headers=summary_headers, params=summary_querystring)
+
+    game_summary_info = {}
+
+    if summary_response.status_code == 200:
+        summary_data = summary_response.json()
+        
+        game_summary_info.update(summary_data)
+
+        return game_summary_info
+
+    else:
+        return  f"API Error: {summary_response.status_code}"
+
         
