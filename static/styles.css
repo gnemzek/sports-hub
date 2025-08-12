@@ -5,7 +5,9 @@ PWHL Purple: #6A4C93 (not pulled from PWHL stuff, but generated in a palatte tha
 Secondary colors:
 Yellow: FFCA3A
 Green: 8AC926
-Blue: 1982C4
+Blue: 1982C4 */
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 /* Overall Styles */
 .site-logo {
@@ -21,8 +23,7 @@ Blue: 1982C4
 }
 
 .main-container {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 @media (min-width: 1400px) {
@@ -33,6 +34,7 @@ Blue: 1982C4
 
 h1 {
     text-align: center;
+    margin: 15px;
 }
 
 h1,
@@ -156,7 +158,7 @@ a.btn.btn-primary.news-button {
 }
 
 
-/* Scores */
+/* Scores and Summary */
 
 .todays-live-scores {
     border: 5px solid #fa4d00;
@@ -166,6 +168,15 @@ a.btn.btn-primary.news-button {
 
 .game-name {
     font-weight: bold;
+}
+
+.bi-box-arrow-up-right {
+    cursor: pointer;
+}
+
+.summary-game-score {
+    font-weight: bold;
+    font-size: 20px;
 }
 
 /* News Page */

@@ -9,3 +9,6 @@ from helpers import date_handling
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
 
+# PWHL league ID: 261
+# Frost Team ID: 2393
+

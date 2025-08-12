@@ -17,7 +17,7 @@
 
 <body class="wnba">
   {% include "header.html" %}
-  <div class="container">
+  <div class="container main-container">
     <h1>WNBA Hub</h1>
 
 
@@ -36,18 +36,19 @@
           {% endfor %}
         </div>
 
-         <div class="todays-live-scores">
+        <div class="todays-live-scores">
           <h2>Today's Live Scores</h2>
           {% for score in live_scores %}
           <div class="score-wrapper">
-           <p> <span class="game-name">{{ score.name }}</span>
-            <br>
-            <span class="game-score">{{ score.away_score }} - {{ score.home_score }}</span> </p>
+            <p> <span class="game-name">{{ score.name }}</span>
+              <br>
+              <span class="game-score">{{ score.away_score }} - {{ score.home_score }}</span>
+            </p>
           </div>
           {% endfor %}
         </div>
 
-       
+
 
         <div class="league-standings">
           <h2>League Standings</h2>
@@ -60,7 +61,7 @@
 
             </div>
             <div class="team-details col-8">
-             <p> <span class="team-name">{{ team.name }}</span> ({{ team.abbreviation }}) </p>
+              <p> <span class="team-name">{{ team.name }}</span> ({{ team.abbreviation }}) </p>
             </div>
             <div class="team-conf col-2">
               <p>{{ team.games_behind }} </p>
@@ -78,9 +79,31 @@
           <h2>Yesterday's Scores</h2>
           {% for score in yesterdays_scores %}
           <div class="score-wrapper">
-           <p> <span class="game-name">{{ score.name }} </span>
-            <br>
-            {{ score.away_score }} - {{ score.home_score }} </p>
+            <p> <span class="game-name">{{ score.name }} </span> <a data-bs-toggle="modal"
+                data-bs-target="#game-summary-modal"><i class="bi bi-box-arrow-up-right"></i></a>
+              <br>
+              {{ score.away_score }} - {{ score.home_score }}
+            </p>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="game-summary-modal" tabindex="-1" aria-labelledby="game-summary-modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="game-summary-modalLabel">Game Summary</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <h3><span class="game-name">{{ score.name }} </span> </h3>
+                 <p class="summary-game-score">{{ score.away_score }} - {{ score.home_score }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           {% endfor %}

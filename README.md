@@ -49,3 +49,7 @@ For a live demo (so you don't have to get your own API key and set it up locally
     ```
 9. Open your browser and navigate to  
    [http://localhost:5000/](http://localhost:5000/)
+
+## Screenshots
+
+![Screenshot of WNBA Hub](static/WNBA_Ex_1.png "WNBA Hub")

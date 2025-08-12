@@ -154,7 +154,7 @@ def get_yesterdays_scores():
         for game in data["events"]:
             competition = game["competitions"][i]
             game_id = game.get("id")
-
+            print(game_id)
             game_info.append({
                "id": game_id,
                "name": game.get("name"),
