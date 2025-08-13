@@ -101,15 +101,18 @@
 
                   <div class="row table-headings">
                     <div class="col-2"></div>
-                    <div class="col-2">FGs</div>
-                    <div class="col-1">FG %</div>
-                    <div class="col-2">3PT</div>
-                    <div class="col-1">3PT %</div>
-                    <div class="col-2">FT</div>
-                    <div class="col-1">FT %</div>
-                    <!-- <div class="col-1">REB</div>
-                    <div class="col-1">OR</div>
-                    <div class="col-1">DR</div> -->
+                    <div class="col-2"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Field goals made vs attempted">FGs</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Percentage of field goals made vs attempted">FG %</span></div>
+                    <div class="col-2"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="3 pointers made vs attempted">3PT</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Percentage of 3 pointers made vs attempted">3PT %</span></div>
+                    <div class="col-2"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Free throws made vs attempted">FT</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Percentage of free throws made vs attempted">FT %</span></div>
                   </div>
                   <div class="row">
                     <div class="col-2"><span class="team-name-table"
@@ -120,9 +123,6 @@
                     <div class="col-1">{{score.away_3PT_percentage}}</div>
                     <div class="col-2">{{score.away_freeThrow_score}}</div>
                     <div class="col-1">{{score.away_freeThrow_percentage}}</div>
-                    <!-- <div class="col-1">{{score.away_total_rebounds}}</div>
-                    <div class="col-1">{{score.away_offensive_rebounds}}</div>
-                    <div class="col-1">{{score.away_defensive_rebounds}}</div> -->
                   </div>
                   <div class="row">
                     <div class="col-2"><span class="team-name-table"
@@ -133,18 +133,15 @@
                     <div class="col-1">{{score.home_3PT_percentage}}</div>
                     <div class="col-2">{{score.home_freeThrow_score}}</div>
                     <div class="col-1">{{score.home_freeThrow_percentage}}</div>
-                    <!-- <div class="col-1">{{score.home_total_rebounds}}</div>
-                    <div class="col-1">{{score.home_offensive_rebounds}}</div>
-                    <div class="col-1">{{score.home_defensive_rebounds}}</div> -->
                   </div>
 
-                  <hr> 
-                  
+                  <hr>
+
                   <div class="row table-headings">
                     <div class="col-2"></div>
-                    <div class="col-1">REB</div>
-                    <div class="col-1">OR</div>
-                    <div class="col-1">DR</div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip" data-bs-title="Total rebounds">REB</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip" data-bs-title="Offensive rebounds">OR</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip" data-bs-title="Defensive rebounds">DR</span></div>
                   </div>
                   <div class="row">
                     <div class="col-2"><span class="team-name-table"

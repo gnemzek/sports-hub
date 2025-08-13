@@ -173,7 +173,8 @@ a.btn.btn-primary.news-button {
     font-weight: bold;
 }
 
-.bi-box-arrow-up-right {
+.bi-box-arrow-up-right,
+.tooltips {
     cursor: pointer;
 }
 
