@@ -80,19 +80,19 @@
           {% for score in yesterdays_scores %}
           <div class="score-wrapper">
             <p> <span class="game-name">{{ score.name }} </span> <a data-bs-toggle="modal"
-                data-bs-target="#game-summary-modal"><i class="bi bi-box-arrow-up-right"></i></a>
+                data-bs-target="#game-summary-modal-{{ score.id }}"><i class="bi bi-box-arrow-up-right"></i></a>
               <br>
               {{ score.away_score }} - {{ score.home_score }}
             </p>
           </div>
 
           <!-- Modal -->
-          <div class="modal fade" id="game-summary-modal" tabindex="-1" aria-labelledby="game-summary-modalLabel"
+          <div class="modal fade" id="game-summary-modal-{{ score.id }}" tabindex="-1" aria-labelledby="game-summary-modal-{{ score.id }}Label"
             aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="game-summary-modalLabel">Game Summary</h1>
+                  <h1 class="modal-title fs-5" id="game-summary-modal-{{ score.id }}Label">Game Summary</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
