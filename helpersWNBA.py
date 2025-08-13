@@ -155,7 +155,7 @@ def get_yesterdays_scores():
             competition = game["competitions"][i]
             game_id = game.get("id")
             print(game_id)
-            game_info.append({
+            game_info_dict = {
                "id": game_id,
                "name": game.get("name"),
                "color": game.get("color"),
@@ -166,8 +166,17 @@ def get_yesterdays_scores():
                "away_team": competition["competitors"][1],
                "away_team_name": competition["competitors"][1]["team"]["displayName"],
                "away_score": competition["competitors"][1]["score"],
-               "game_summary": get_game_summary(game_id),
-            })
+            }
+
+            game_summary_info = get_game_summary(game_id)
+            game_summary_dict = {
+                "link": game_summary_info["seasonSeries"][0]["events"][2]["links"][0]["href"]
+            }
+
+            combined_dicts = game_info_dict | game_summary_dict
+
+            game_info.append(combined_dicts)
+            
 
         return game_info
     else:

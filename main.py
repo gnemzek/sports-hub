@@ -16,6 +16,7 @@ app = Flask(__name__)
 @app.route('/')
 def root():
     today = date.today()
+    # Code to show homepage based on month. Typically the PWHL and WNBA don't overlap much, if at all. 
     # Example logic: WNBA season May–September, else PWHL
     if 5 <= today.month <= 9:
         return redirect(url_for('wnba_home'))
