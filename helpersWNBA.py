@@ -170,7 +170,29 @@ def get_yesterdays_scores():
 
             game_summary_info = get_game_summary(game_id)
             game_summary_dict = {
-                "link": game_summary_info["seasonSeries"][0]["events"][2]["links"][0]["href"]
+                "link": game_summary_info["seasonSeries"][0]["events"][2]["links"][0]["href"],
+                "away_short_display": game_summary_info["boxScore"]["teams"][0]["team"]["shortDisplayName"],
+                "home_short_display": game_summary_info["boxScore"]["teams"][1]["team"]["shortDisplayName"],
+                "away_team_color": game_summary_info["boxScore"]["teams"][0]["team"]["color"],
+                "home_team_color": game_summary_info["boxScore"]["teams"][1]["team"]["color"],
+                "away_FG_score": game_summary_info["boxScore"]["teams"][0]["statistics"][0]["displayValue"],
+                "home_FG_score": game_summary_info["boxScore"]["teams"][1]["statistics"][0]["displayValue"],
+                "away_FG_percentage": game_summary_info["boxScore"]["teams"][0]["statistics"][1]["displayValue"],
+                "home_FG_percentage": game_summary_info["boxScore"]["teams"][1]["statistics"][1]["displayValue"],
+                "away_3PT_score": game_summary_info["boxScore"]["teams"][0]["statistics"][2]["displayValue"],
+                "home_3PT_score": game_summary_info["boxScore"]["teams"][1]["statistics"][2]["displayValue"],
+                "away_3PT_percentage": game_summary_info["boxScore"]["teams"][0]["statistics"][3]["displayValue"],
+                "home_3PT_percentage": game_summary_info["boxScore"]["teams"][1]["statistics"][3]["displayValue"],
+                "away_freeThrow_score": game_summary_info["boxScore"]["teams"][0]["statistics"][4]["displayValue"],
+                "home_freeThrow_score": game_summary_info["boxScore"]["teams"][1]["statistics"][4]["displayValue"],
+                "away_freeThrow_percentage": game_summary_info["boxScore"]["teams"][0]["statistics"][5]["displayValue"],
+                "home_freeThrow_percentage": game_summary_info["boxScore"]["teams"][1]["statistics"][5]["displayValue"],
+                "away_total_rebounds": game_summary_info["boxScore"]["teams"][0]["statistics"][6]["displayValue"],
+                "home_total_rebounds": game_summary_info["boxScore"]["teams"][1]["statistics"][6]["displayValue"],
+                "away_offensive_rebounds": game_summary_info["boxScore"]["teams"][0]["statistics"][7]["displayValue"],
+                "home_offensive_rebounds": game_summary_info["boxScore"]["teams"][1]["statistics"][7]["displayValue"],
+                "away_defensive_rebounds": game_summary_info["boxScore"]["teams"][0]["statistics"][8]["displayValue"],
+                "home_defensive_rebounds": game_summary_info["boxScore"]["teams"][1]["statistics"][8]["displayValue"],
             }
 
             combined_dicts = game_info_dict | game_summary_dict

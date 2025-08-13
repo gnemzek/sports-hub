@@ -32,6 +32,12 @@ Blue: 1982C4 */
     }
 }
 
+body,
+p,
+a {
+    font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
+}
+
 h1 {
     text-align: center;
     margin: 15px;
@@ -62,10 +68,7 @@ h2 {
 
 }
 
-p,
-a {
-    font-family: roc-grotesk, Helvetica, Arial, Roboto, sans-serif;
-}
+
 
 .img-fluid {
     width: 100%;
@@ -177,6 +180,15 @@ a.btn.btn-primary.news-button {
 .summary-game-score {
     font-weight: bold;
     font-size: 20px;
+}
+
+.team-name-table,
+.table-headings {
+    font-weight: bold;
+}
+
+.summary-read-more {
+    margin-top: 30px;
 }
 
 /* News Page */

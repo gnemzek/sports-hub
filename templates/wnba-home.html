@@ -87,8 +87,8 @@
           </div>
 
           <!-- Modal -->
-          <div class="modal fade" id="game-summary-modal-{{ score.id }}" tabindex="-1" aria-labelledby="game-summary-modal-{{ score.id }}Label"
-            aria-hidden="true">
+          <div class="modal fade" id="game-summary-modal-{{ score.id }}" tabindex="-1"
+            aria-labelledby="game-summary-modal-{{ score.id }}Label" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -96,9 +96,75 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                 <h3><span class="game-name">{{ score.name }} </span> </h3>
-                 <p class="summary-game-score">{{ score.away_score }} - {{ score.home_score }}</p>
-                 <a href="{{score.link}}" class="btn btn-primary" target="_blank">Read More</a>
+                  <h3><span class="game-name">{{ score.name }} </span> </h3>
+                  <p class="summary-game-score">{{ score.away_score }} - {{ score.home_score }}</p>
+
+                  <div class="row table-headings">
+                    <div class="col-2"></div>
+                    <div class="col-2">FGs</div>
+                    <div class="col-1">FG %</div>
+                    <div class="col-2">3PT</div>
+                    <div class="col-1">3PT %</div>
+                    <div class="col-2">FT</div>
+                    <div class="col-1">FT %</div>
+                    <!-- <div class="col-1">REB</div>
+                    <div class="col-1">OR</div>
+                    <div class="col-1">DR</div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-2"><span class="team-name-table"
+                        style="color: #{{score.away_team_color}}">{{score.away_short_display}}</span></div>
+                    <div class="col-2">{{score.away_FG_score}}</div>
+                    <div class="col-1">{{score.away_FG_percentage}}</div>
+                    <div class="col-2">{{score.away_3PT_score}}</div>
+                    <div class="col-1">{{score.away_3PT_percentage}}</div>
+                    <div class="col-2">{{score.away_freeThrow_score}}</div>
+                    <div class="col-1">{{score.away_freeThrow_percentage}}</div>
+                    <!-- <div class="col-1">{{score.away_total_rebounds}}</div>
+                    <div class="col-1">{{score.away_offensive_rebounds}}</div>
+                    <div class="col-1">{{score.away_defensive_rebounds}}</div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-2"><span class="team-name-table"
+                        style="color: #{{score.home_team_color}}">{{score.home_short_display}}</span></div>
+                    <div class="col-2">{{score.home_FG_score}}</div>
+                    <div class="col-1">{{score.home_FG_percentage}}</div>
+                    <div class="col-2">{{score.home_3PT_score}}</div>
+                    <div class="col-1">{{score.home_3PT_percentage}}</div>
+                    <div class="col-2">{{score.home_freeThrow_score}}</div>
+                    <div class="col-1">{{score.home_freeThrow_percentage}}</div>
+                    <!-- <div class="col-1">{{score.home_total_rebounds}}</div>
+                    <div class="col-1">{{score.home_offensive_rebounds}}</div>
+                    <div class="col-1">{{score.home_defensive_rebounds}}</div> -->
+                  </div>
+
+                  <hr> 
+                  
+                  <div class="row table-headings">
+                    <div class="col-2"></div>
+                    <div class="col-1">REB</div>
+                    <div class="col-1">OR</div>
+                    <div class="col-1">DR</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-2"><span class="team-name-table"
+                        style="color: #{{score.away_team_color}}">{{score.away_short_display}}</span></div>
+
+                    <div class="col-1">{{score.away_total_rebounds}}</div>
+                    <div class="col-1">{{score.away_offensive_rebounds}}</div>
+                    <div class="col-1">{{score.away_defensive_rebounds}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-2"><span class="team-name-table"
+                        style="color: #{{score.home_team_color}}">{{score.home_short_display}}</span></div>
+
+                    <div class="col-1">{{score.home_total_rebounds}}</div>
+                    <div class="col-1">{{score.home_offensive_rebounds}}</div>
+                    <div class="col-1">{{score.home_defensive_rebounds}}</div>
+                  </div>
+
+
+                  <a href="{{score.link}}" class="btn btn-primary summary-read-more" target="_blank">Read More</a>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
