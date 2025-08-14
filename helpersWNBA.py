@@ -116,7 +116,7 @@ def get_live_scores():
                "away_team_name": competition["competitors"][1]["team"]["displayName"],
                "away_score": competition["competitors"][1]["score"],
            })
-
+        
         return game_info
     else:
         return  f"API Error: {response.status_code}"

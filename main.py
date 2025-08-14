@@ -78,7 +78,8 @@ def wnba_home():
         yesterdays_scores = get_yesterdays_scores()            
         live_scores = get_live_scores()
         standings_data = get_league_standings()
-        news = get_league_news(5)    
+        news = get_league_news(5)
+
         return render_template('wnba-home.html', raw_data=data, games=processed_games, teams=standings_data, news=news, live_scores=live_scores, yesterdays_scores=yesterdays_scores)
     else:
         return f"API Error: {response.status_code}"
