@@ -84,6 +84,9 @@
       <div class="col-md-6 col-12">
         <div class="todays-live-scores">
           <h2>Yesterday's Scores</h2>
+           {% if yesterdays_scores | length == 0 %}
+          <p>There were no games scheduled yesterday. <br> Check back tomorrow.</p>
+          {% endif %}
           {% for score in yesterdays_scores %}
           <div class="score-wrapper">
             <p> <span class="game-name">{{ score.name }} </span> <a data-bs-toggle="modal"
