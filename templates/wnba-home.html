@@ -84,7 +84,7 @@
       <div class="col-md-6 col-12">
         <div class="todays-live-scores">
           <h2>Yesterday's Scores</h2>
-           {% if yesterdays_scores | length == 0 %}
+          {% if yesterdays_scores | length == 0 %}
           <p>There were no games scheduled yesterday. <br> Check back tomorrow.</p>
           {% endif %}
           {% for score in yesterdays_scores %}
@@ -155,6 +155,14 @@
                         data-bs-title="Offensive rebounds">OR</span></div>
                     <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
                         data-bs-title="Defensive rebounds">DR</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Assists">AST</span></div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip" data-bs-title="Steals">STL</span>
+                    </div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip" data-bs-title="Blocks">BLK</span>
+                    </div>
+                    <div class="col-1"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="Turnovers">TO</span></div>
                   </div>
                   <div class="row">
                     <div class="col-2"><span class="team-name-table"
@@ -163,6 +171,10 @@
                     <div class="col-1">{{score.away_total_rebounds}}</div>
                     <div class="col-1">{{score.away_offensive_rebounds}}</div>
                     <div class="col-1">{{score.away_defensive_rebounds}}</div>
+                    <div class="col-1">{{score.away_assists}}</div>
+                    <div class="col-1">{{score.away_steals}}</div>
+                    <div class="col-1">{{score.away_blocks}}</div>
+                    <div class="col-1">{{score.away_turnovers}}</div>
                   </div>
                   <div class="row">
                     <div class="col-2"><span class="team-name-table"
@@ -171,6 +183,10 @@
                     <div class="col-1">{{score.home_total_rebounds}}</div>
                     <div class="col-1">{{score.home_offensive_rebounds}}</div>
                     <div class="col-1">{{score.home_defensive_rebounds}}</div>
+                    <div class="col-1">{{score.home_assists}}</div>
+                    <div class="col-1">{{score.home_steals}}</div>
+                    <div class="col-1">{{score.home_blocks}}</div>
+                    <div class="col-1">{{score.home_turnovers}}</div>
                   </div>
 
 

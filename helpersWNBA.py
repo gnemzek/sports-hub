@@ -193,6 +193,14 @@ def get_yesterdays_scores():
                 "home_offensive_rebounds": game_summary_info["boxScore"]["teams"][1]["statistics"][7]["displayValue"],
                 "away_defensive_rebounds": game_summary_info["boxScore"]["teams"][0]["statistics"][8]["displayValue"],
                 "home_defensive_rebounds": game_summary_info["boxScore"]["teams"][1]["statistics"][8]["displayValue"],
+                "away_assists": game_summary_info["boxScore"]["teams"][0]["statistics"][9]["displayValue"],
+                "home_assists": game_summary_info["boxScore"]["teams"][1]["statistics"][9]["displayValue"],
+                "away_steals": game_summary_info["boxScore"]["teams"][0]["statistics"][10]["displayValue"],
+                "home_steals": game_summary_info["boxScore"]["teams"][1]["statistics"][10]["displayValue"],
+                "away_blocks": game_summary_info["boxScore"]["teams"][0]["statistics"][11]["displayValue"],
+                "home_blocks": game_summary_info["boxScore"]["teams"][1]["statistics"][11]["displayValue"],
+                "away_turnovers": game_summary_info["boxScore"]["teams"][0]["statistics"][12]["displayValue"],
+                "home_turnovers": game_summary_info["boxScore"]["teams"][1]["statistics"][12]["displayValue"],
             }
 
             combined_dicts = game_info_dict | game_summary_dict
