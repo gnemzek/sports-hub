@@ -237,3 +237,37 @@ def get_game_summary(game_id):
         return  f"API Error: {summary_response.status_code}"
 
         
+def get_team_info(team_id):
+
+    url = "https://wnba-api.p.rapidapi.com/wnbateaminfo"
+
+    querystring = {"teamid":team_id}
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+
+    team_info = []
+
+    if response.status_code == 200:
+        data = response.json()
+       
+
+        team_info.append({
+            "name": data["team"]["displayName"],
+            "color": data["team"]["color"],
+            "alternateColor": data["team"]["alternateColor"],
+            "logo": data["team"]["logos"][0]["href"],
+            "record": data["team"]["record"]["items"][0]["summary"],
+            "link": data["team"]["links"][0]["href"],
+        })
+          
+
+        return team_info
+    
+    else:
+        return  f"API Error: {response.status_code}"
+

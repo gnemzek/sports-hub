@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, url_for
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
 from helpers import date_handling
-from helpersWNBA import get_league_standings, get_league_news, get_live_scores, get_yesterdays_scores
+from helpersWNBA import get_league_standings, get_league_news, get_live_scores, get_yesterdays_scores, get_team_info
 
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
@@ -89,6 +89,13 @@ def wnba_news():
     news = get_league_news(30)  
 
     return render_template('wnba-news.html', news=news) 
+
+@app.route("/teams/<team_id>")
+def team_info(team_id):
+     team = get_team_info(team_id)
+     print(team)
+
+     return render_template('team-info.html', team=team )
 
 @app.route('/pwhl')
 def pwhl_home():

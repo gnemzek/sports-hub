@@ -68,7 +68,7 @@
 
             </div>
             <div class="team-details col-8">
-              <p> <span class="team-name">{{ team.name }}</span> ({{ team.abbreviation }}) </p>
+              <p><a href="{{ url_for('team_info', team_id=team.id) }}" class="team-name-link"> <span class="team-name">{{ team.name }}</span></a> ({{ team.abbreviation }})  </p>
             </div>
             <div class="team-conf col-2">
               <p>{{ team.games_behind }} </p>
