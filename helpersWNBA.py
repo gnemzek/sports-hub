@@ -37,12 +37,17 @@ def get_league_standings():
                     if stat.get("abbreviation") == "GB" or stat.get("name") == "gamesBehind":
                         games_behind_value = stat.get("displayValue")
                         break
+                for stat in entry["stats"]:
+                    if stat.get("name") == "League Standings":
+                        league_standing = stat.get("summary")
+                        break
            all_teams.append({
                 "id": team_info.get("id"),
                 "name": team_info.get("displayName"),
                 "abbreviation": team_info.get("abbreviation"),
                 "logo": team_info.get("logos")[0].get("href") if team_info.get("logos") else "",
-                "games_behind": games_behind_value
+                "games_behind": games_behind_value,
+                "record": league_standing
                 })
 
        return all_teams
@@ -105,7 +110,7 @@ def get_live_scores():
         for game in data["events"]:
            competition = game["competitions"][i]
            game_id = game.get("id")
-           print(game_id)
+           # print(game_id)
            game_info.append({
                "id": game_id,
                "name": game.get("name"),
@@ -257,7 +262,6 @@ def get_team_info(team_id):
 
     if response.status_code == 200:
         data = response.json()
-       
 
         team_info.append({
             "name": data["team"]["displayName"],
@@ -267,6 +271,7 @@ def get_team_info(team_id):
             "record": data["team"]["record"]["items"][0]["summary"],
             "link": data["team"]["links"][0]["href"],
             "standings": data["team"]["standingSummary"],
+            "overallRecord": data["team"]["record"]["items"][0]["summary"],
         })
           
 

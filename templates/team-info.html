@@ -17,9 +17,10 @@
 
         <h2>{{ info.name }}</h2>
         <div class="row">
-            <div class="col-3"><img src="{{ info.logo }}" class="team-logo"></div>
+            <div class="col-3"><img src="{{ info.logo }}" class="team-page-logo img-fluid"></div>
             <div class="col-9">
-                <p>{{info.standings}}</p>
+                <p class="team-page-standing">{{info.standings}}</p>
+                <p class="team-page-record">{{info.overallRecord}}</p>
             </div>
         </div>
 

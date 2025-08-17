@@ -120,6 +120,14 @@ img.team-logo.img-fluid {
     margin-left: 0;
 }
 
+span.team-record {
+    font-size: .9rem;
+}
+
+a.team-name-link {
+    color: #fa4d00;
+}
+
 /* WNBA News */
 
 .todays-news {
@@ -201,6 +209,16 @@ a.btn.btn-primary.news-button {
 
 .news-row {
     margin-bottom: 30px;
+}
+
+/* Team Info page */
+.team-page-standing {
+    text-align: center;
+    font-weight: bold;
+}
+
+.team-page-record {
+    text-align: center;
 }
 
 
