@@ -68,7 +68,9 @@ h2 {
 
 }
 
-
+.main-container .nav {
+    margin-top: 15px;
+}
 
 .img-fluid {
     width: 100%;

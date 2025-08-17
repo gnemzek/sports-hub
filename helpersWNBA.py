@@ -104,8 +104,10 @@ def get_live_scores():
         i = 0
         for game in data["events"]:
            competition = game["competitions"][i]
+           game_id = game.get("id")
+           print(game_id)
            game_info.append({
-               "id": game.get("id"),
+               "id": game_id,
                "name": game.get("name"),
                "color": game.get("color"),
                "alt_color": game.get("alternateColor"),
@@ -115,6 +117,7 @@ def get_live_scores():
                "away_team": competition["competitors"][1],
                "away_team_name": competition["competitors"][1]["team"]["displayName"],
                "away_score": competition["competitors"][1]["score"],
+               "status": competition["status"]["type"]["description"]
            })
         
         return game_info
@@ -154,7 +157,7 @@ def get_yesterdays_scores():
         for game in data["events"]:
             competition = game["competitions"][i]
             game_id = game.get("id")
-            print(game_id)
+            # print(game_id)
             game_info_dict = {
                "id": game_id,
                "name": game.get("name"),
@@ -263,6 +266,7 @@ def get_team_info(team_id):
             "logo": data["team"]["logos"][0]["href"],
             "record": data["team"]["record"]["items"][0]["summary"],
             "link": data["team"]["links"][0]["href"],
+            "standings": data["team"]["standingSummary"],
         })
           
 

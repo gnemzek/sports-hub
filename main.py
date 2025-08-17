@@ -93,7 +93,6 @@ def wnba_news():
 @app.route("/teams/<team_id>")
 def team_info(team_id):
      team = get_team_info(team_id)
-     print(team)
 
      return render_template('team-info.html', team=team )
 

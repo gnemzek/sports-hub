@@ -14,9 +14,15 @@
 
         <h1>WNBA</h1>
         {% for info in team %}
-        
+
         <h2>{{ info.name }}</h2>
-        <img src="{{ info.logo }}" class="team-logo">
+        <div class="row">
+            <div class="col-3"><img src="{{ info.logo }}" class="team-logo"></div>
+            <div class="col-9">
+                <p>{{info.standings}}</p>
+            </div>
+        </div>
+
 
         {% endfor %}
 
