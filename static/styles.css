@@ -90,6 +90,7 @@ h2 {
 /* Game Schedule */
 .todays-games {
     border: 5px solid #fa4d00;
+    box-shadow: 5px 5px 10px #888888;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -99,6 +100,7 @@ h2 {
 .league-standings {
     border: 5px solid #fa4d00;
     margin-bottom: 30px;
+    box-shadow: 5px 5px 10px #888888;
 }
 
 img.team-logo.img-fluid {
@@ -133,6 +135,7 @@ a.team-name-link {
 .todays-news {
     border: 5px solid #fa4d00;
     margin-bottom: 30px;
+    box-shadow: 5px 5px 10px #888888;
 }
 
 .news-entry {
@@ -175,6 +178,7 @@ a.btn.btn-primary.news-button {
 
 .todays-live-scores {
     border: 5px solid #fa4d00;
+    box-shadow: 5px 5px 10px #888888;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -226,6 +230,8 @@ a.btn.btn-primary.news-button {
 .game-schedule-wrapper,
 .all-teams-wrapper {
     border: 5px solid #6A4C93;
+    box-shadow: 5px 5px 10px #888888;
+    margin-bottom: 30px;
 }
 
 .game-schedule-wrapper {
