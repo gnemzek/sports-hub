@@ -227,29 +227,32 @@
         </div>
 
         <div class="random-player">
-            <h2>Player Highlight</h2>
+            <h2>Random Player Highlight</h2>
              {% for player in random_player %}
-            <h3 class="random-player-name">{{player.name}}</h3>
+            <h3 class="random-player-name">{{player.name}} of the {{player.team_name}}</h3>
             <img class="img-fluid random-player-headshot" src="{{player.headshot}}">
             <div class="row player-stats-row">
               <div class="col-4 stats-wrapper">
                 <div class="stats-wrapper-inner">
                   <p class="player-stat">{{player.PPG}}</p>
-                  <p class="stats-label">PPG</p>
+                  <p class="stats-label"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="The average number of points scored per game.">PPG</span></p>
                 </div>
               </div>
 
                <div class="col-4 stats-wrapper">
                 <div class="stats-wrapper-inner">
                   <p class="player-stat">{{player.TPP}}</p>
-                  <p class="stats-label">3P%</p>
+                  <p class="stats-label"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="The ratio of 3pt field goals made to 3pt field goals attempted.">3P%</span></p>
                 </div>
               </div> 
 
                <div class="col-4 stats-wrapper">
                 <div class="stats-wrapper-inner">
                   <p class="player-stat">{{player.FGP}}</p>
-                  <p class="stats-label">FG%</p>
+                  <p class="stats-label"><span class="tooltips" data-bs-toggle="tooltip"
+                        data-bs-title="The ratio of free throws made to free throws attempted.">FG%</span></p>
                 </div>
               </div>
             </div>

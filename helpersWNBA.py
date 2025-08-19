@@ -339,9 +339,10 @@ def get_team_ids():
         i = 0
 
         for team in data:
-            team_ids.append(
-                data[i]["teamId"]
-            )
+            team_ids.append({
+               "id": data[i]["teamId"],
+               "team_name": data[i]["displayName"]
+            })
             i += 1
           
 
@@ -357,7 +358,7 @@ def get_team_players():
     
     roster_url = "https://wnba-api.p.rapidapi.com/team-roster"
 
-    roster_querystring = {"teamId": random_team_id}
+    roster_querystring = {"teamId": random_team_id["id"]}
 
     roster_headers = {
         "x-rapidapi-key": api_key,
@@ -380,7 +381,8 @@ def get_team_players():
             players.append({
                 "id":player["playerId"],
                 "name": player["fullName"],
-                "headshot": player["headshot"]
+                "headshot": player["headshot"],
+                "team_name": random_team_id["team_name"]
             })
 
 
@@ -391,6 +393,8 @@ def get_team_players():
     else:
         return  f"API Error: {roster_response.status_code}"
 
+
+   
 def get_random_player():
     today = datetime.now(timezone.utc)
     year = today.strftime("%Y")
@@ -421,12 +425,13 @@ def get_random_player():
             "id": random_player["id"],
             "name": random_player["name"],
             "headshot": random_player["headshot"],
+            "team_name": random_player["team_name"],
             "PPG": data["player_overview"]["statistics"]["splits"][0]["stats"][2],
             "APG": data["player_overview"]["statistics"]["splits"][0]["stats"][4],
             "TPP": data["player_overview"]["statistics"]["splits"][0]["stats"][9],
             "FGP": data["player_overview"]["statistics"]["splits"][0]["stats"][10]
         })
-      
+
         print(player_stats)
         return player_stats
     
