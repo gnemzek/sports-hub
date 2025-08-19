@@ -382,7 +382,8 @@ def get_team_players():
                 "id":player["playerId"],
                 "name": player["fullName"],
                 "headshot": player["headshot"],
-                "team_name": random_team_id["team_name"]
+                "team_name": random_team_id["team_name"],
+                "jersey": player["jersey"]
             })
 
 
@@ -426,6 +427,7 @@ def get_random_player():
             "name": random_player["name"],
             "headshot": random_player["headshot"],
             "team_name": random_player["team_name"],
+            "jersey": random_player["jersey"],
             "PPG": data["player_overview"]["statistics"]["splits"][0]["stats"][2],
             "APG": data["player_overview"]["statistics"]["splits"][0]["stats"][4],
             "TPP": data["player_overview"]["statistics"]["splits"][0]["stats"][9],

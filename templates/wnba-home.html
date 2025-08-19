@@ -229,7 +229,7 @@
         <div class="random-player">
             <h2>Random Player Highlight</h2>
              {% for player in random_player %}
-            <h3 class="random-player-name">{{player.name}} of the {{player.team_name}}</h3>
+            <h3 class="random-player-name">{{player.name}} of the {{player.team_name}} (#{{player.jersey}})</h3>
             <img class="img-fluid random-player-headshot" src="{{player.headshot}}">
             <div class="row player-stats-row">
               <div class="col-4 stats-wrapper">
