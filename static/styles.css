@@ -287,6 +287,10 @@ p.player-number {
     padding: 15px 0;
 }
 
+.team-logo-wrapper-2 img {
+    float: right;
+}
+
 /* PWHL Page */
 .game-schedule-wrapper,
 .all-teams-wrapper {
