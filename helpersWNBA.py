@@ -301,14 +301,17 @@ def get_team_roster(team_id):
 
         for player in data["data"]:
 
+            if player["headshot"] == "":
+                player["headshot"] = "../static/placeholder.png"
+
             team_roster.append({
                 "player_id": player["playerId"],
                 "fullname": player["fullName"],
                 "age": player["age"],
                 "headshot": player["headshot"],
                 "number": player["jersey"],
-
             })
+
        
           
 
@@ -371,6 +374,9 @@ def get_team_players():
         
         for player in data["data"]:
 
+            if player["headshot"] == "":
+                player["headshot"] = "../static/placeholder.png"
+
             players.append({
                 "id":player["playerId"],
                 "name": player["fullName"],
@@ -414,7 +420,7 @@ def get_random_player():
         player_stats.append({
             "id": random_player["id"],
             "name": random_player["name"],
-            "headshot": random_player.get("headshot", "../static/placeholder.jpg"),
+            "headshot": random_player["headshot"],
             "PPG": data["player_overview"]["statistics"]["splits"][0]["stats"][2],
             "APG": data["player_overview"]["statistics"]["splits"][0]["stats"][4],
             "TPP": data["player_overview"]["statistics"]["splits"][0]["stats"][9],

@@ -252,6 +252,12 @@ p.player-stat {
 .team-page-standing {
     text-align: center;
     font-weight: bold;
+    font-size: 2rem;
+}
+
+.team-info-wrapper.row {
+    align-items: center;
+    margin-bottom:60px;
 }
 
 .team-page-record {
@@ -262,10 +268,24 @@ img.team-page-logo.img-fluid {
     max-width: 200px;
 }
 
-.roster-h3 {
-    text-align:center;
+.player-name {
+    text-align: center;
+    font-weight: bold;
 }
 
+p.player-number {
+    font-size: 2rem;
+    text-align: right;
+}
+
+.roster-wrapper .row:nth-child(odd) {
+    background: #FFEBE8;
+}
+
+.roster-wrapper .row {
+    align-items: center;
+    padding: 15px 0;
+}
 
 /* PWHL Page */
 .game-schedule-wrapper,
