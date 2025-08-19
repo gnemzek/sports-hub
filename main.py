@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, url_for
 from datetime import datetime, timezone, date
 from zoneinfo import ZoneInfo
 from helpers import date_handling
-from helpersWNBA import get_league_standings, get_league_news, get_live_scores, get_yesterdays_scores, get_team_info
+from helpersWNBA import get_league_standings, get_league_news, get_live_scores, get_yesterdays_scores, get_team_info, get_team_roster, get_random_player
 
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
@@ -79,8 +79,9 @@ def wnba_home():
         live_scores = get_live_scores()
         standings_data = get_league_standings()
         news = get_league_news(5)
+        random_player = get_random_player()
 
-        return render_template('wnba-home.html', raw_data=data, games=processed_games, teams=standings_data, news=news, live_scores=live_scores, yesterdays_scores=yesterdays_scores)
+        return render_template('wnba-home.html', raw_data=data, games=processed_games, teams=standings_data, news=news, live_scores=live_scores, yesterdays_scores=yesterdays_scores, random_player=random_player)
     else:
         return f"API Error: {response.status_code}"
 
@@ -93,8 +94,9 @@ def wnba_news():
 @app.route("/teams/<team_id>")
 def team_info(team_id):
      team = get_team_info(team_id)
+     roster = get_team_roster(team_id)
 
-     return render_template('team-info.html', team=team )
+     return render_template('team-info.html', team=team, roster=roster )
 
 @app.route('/pwhl')
 def pwhl_home():

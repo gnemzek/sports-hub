@@ -16,15 +16,38 @@
         {% for info in team %}
 
         <h2>{{ info.name }}</h2>
-        <div class="row">
-            <div class="col-3"><img src="{{ info.logo }}" class="team-page-logo img-fluid"></div>
-            <div class="col-9">
-                <p class="team-page-standing">{{info.standings}}</p>
-                <p class="team-page-record">{{info.overallRecord}}</p>
+        <div class="team-info-wrapper row">
+            <div class="col-3">
+                <img src="{{ info.logo }}" class="team-page-logo img-fluid">
+            </div>
+            <div class="col-6">
+                <p class="team-page-standing">{{info.standings}}<br>
+                    <span class="team-page-record">{{info.overallRecord}}</span>
+                </p>
+            </div>
+             <div class="col-3">
+                <img src="{{ info.logo }}" class="team-page-logo img-fluid">
             </div>
         </div>
 
+        <h3 class="roster-h3">Roster</h3>
 
+        {% endfor %}
+
+
+        {% for player in roster %}
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-2">
+                <p class="player-number">{{player.number}}</p>
+            </div>
+            <div class="col-4">
+                <p class="player-name">{{player.fullname}}</p>
+            </div>
+            <div class="col-2">
+                <img src="{{player.headshot}}" class="img-fluid player-headshot">
+            </div>
+        </div>
         {% endfor %}
 
         <!-- End Container -->

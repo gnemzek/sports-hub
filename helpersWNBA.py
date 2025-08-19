@@ -5,6 +5,7 @@ from datetime import datetime, timezone, date, timedelta
 from zoneinfo import ZoneInfo
 import time
 from helpers import date_handling
+import random
 
 load_dotenv()
 api_key = os.getenv("SPORTS_API_KEY")
@@ -279,4 +280,153 @@ def get_team_info(team_id):
     
     else:
         return  f"API Error: {response.status_code}"
+
+def get_team_roster(team_id):
+    
+    url = "https://wnba-api.p.rapidapi.com/team-roster"
+
+    querystring = {"teamId":team_id}
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+
+    team_roster = []
+
+    if response.status_code == 200:
+        data = response.json()
+
+        for player in data["data"]:
+
+            team_roster.append({
+                "player_id": player["playerId"],
+                "fullname": player["fullName"],
+                "age": player["age"],
+                "headshot": player["headshot"],
+                "number": player["jersey"],
+
+            })
+       
+          
+
+        return team_roster
+    
+    else:
+        return  f"API Error: {response.status_code}"
+
+
+def get_team_ids():
+    url = "https://wnba-api.p.rapidapi.com/team/id"
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    team_ids = []
+
+    if response.status_code == 200:
+        data = response.json()
+
+        i = 0
+
+        for team in data:
+            team_ids.append(
+                data[i]["teamId"]
+            )
+            i += 1
+          
+
+        return team_ids
+    
+    else:
+        return  f"API Error: {response.status_code}"
+
+def get_team_players():
+    team_ids = get_team_ids()
+
+    random_team_id = random.choice(team_ids)
+    
+    roster_url = "https://wnba-api.p.rapidapi.com/team-roster"
+
+    roster_querystring = {"teamId": random_team_id}
+
+    roster_headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    roster_response = requests.get(roster_url, headers=roster_headers, params=roster_querystring)
+
+    players = []
+
+
+    if roster_response.status_code == 200:
+        data = roster_response.json()
+        
+        for player in data["data"]:
+
+            players.append({
+                "id":player["playerId"],
+                "name": player["fullName"],
+                "headshot": player["headshot"]
+            })
+
+
+          
+        return players
+        
+    
+    else:
+        return  f"API Error: {roster_response.status_code}"
+
+def get_random_player():
+    today = datetime.now(timezone.utc)
+    year = today.strftime("%Y")
+    players = get_team_players()
+
+
+    random_player = random.choice(players)
+
+    player_stats = []
+
+    url = "https://wnba-api.p.rapidapi.com/player-overview"
+
+    querystring = {"playerId":random_player["id"]}
+
+
+    headers = {
+        "x-rapidapi-key": api_key,
+        "x-rapidapi-host": "wnba-api.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+
+    
+    if response.status_code == 200:
+        data = response.json()
+
+        player_stats.append({
+            "id": random_player["id"],
+            "name": random_player["name"],
+            "headshot": random_player.get("headshot", "../static/placeholder.jpg"),
+            "PPG": data["player_overview"]["statistics"]["splits"][0]["stats"][2],
+            "APG": data["player_overview"]["statistics"]["splits"][0]["stats"][4],
+            "TPP": data["player_overview"]["statistics"]["splits"][0]["stats"][9],
+            "FGP": data["player_overview"]["statistics"]["splits"][0]["stats"][10]
+        })
+      
+        print(player_stats)
+        return player_stats
+    
+    else:
+        return  f"API Error: {response.status_code}"
+
+
+
 

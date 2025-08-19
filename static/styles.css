@@ -206,6 +206,38 @@ a.btn.btn-primary.news-button {
     margin-top: 30px;
 }
 
+/* Random Player Stats */
+
+.random-player {
+    border: 5px solid #fa4d00;
+    box-shadow: 5px 5px 10px #888888;
+    margin-bottom: 30px;
+}
+.random-player-name {
+    text-align: center;
+}
+
+.stats-wrapper-inner {
+    text-align: center;
+    border: 5px solid #fa4d00;
+    margin: 20px;
+}
+
+p.stats-label {
+    margin-bottom: 0;
+    background: #fa4d00;
+    padding: 5px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+p.player-stat {
+    font-size: 2rem;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
 /* News Page */
 .nav li {
     margin-right: 5px;
@@ -215,6 +247,7 @@ a.btn.btn-primary.news-button {
     margin-bottom: 30px;
 }
 
+
 /* Team Info page */
 .team-page-standing {
     text-align: center;
@@ -223,6 +256,14 @@ a.btn.btn-primary.news-button {
 
 .team-page-record {
     text-align: center;
+}
+
+img.team-page-logo.img-fluid {
+    max-width: 200px;
+}
+
+.roster-h3 {
+    text-align:center;
 }
 
 

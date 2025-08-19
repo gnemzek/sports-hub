@@ -226,6 +226,37 @@
           <a href="{{ url_for('wnba_news') }}" class="btn btn-primary news-button">More News</a>
         </div>
 
+        <div class="random-player">
+            <h2>Player Highlight</h2>
+             {% for player in random_player %}
+            <h3 class="random-player-name">{{player.name}}</h3>
+            <img class="img-fluid random-player-headshot" src="{{player.headshot}}">
+            <div class="row player-stats-row">
+              <div class="col-4 stats-wrapper">
+                <div class="stats-wrapper-inner">
+                  <p class="player-stat">{{player.PPG}}</p>
+                  <p class="stats-label">PPG</p>
+                </div>
+              </div>
+
+               <div class="col-4 stats-wrapper">
+                <div class="stats-wrapper-inner">
+                  <p class="player-stat">{{player.TPP}}</p>
+                  <p class="stats-label">3P%</p>
+                </div>
+              </div> 
+
+               <div class="col-4 stats-wrapper">
+                <div class="stats-wrapper-inner">
+                  <p class="player-stat">{{player.FGP}}</p>
+                  <p class="stats-label">FG%</p>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
 
 
 
