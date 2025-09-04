@@ -434,7 +434,6 @@ def get_random_player():
             "FGP": data["player_overview"]["statistics"]["splits"][0]["stats"][10]
         })
 
-        print(player_stats)
         return player_stats
     
     else:
